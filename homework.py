@@ -46,7 +46,7 @@ class Training:
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
         distance = self.get_distance()
-        speed = distance / self.durarion 
+        speed = distance / self.durarion
         return speed
 
     def get_spent_calories(self) -> float:
@@ -98,8 +98,7 @@ class SportsWalking(Training):
         speed = self.get_mean_speed()
         calories = ((self.cf_calorie_walking1
                     * self.weight
-                    + (speed ** 2
-                    // self.height)
+                    + (speed ** 2 // self.height)
                     * self.cf_calorie_walking2
                     * self.weight)
                     * (self.durarion * 60))
