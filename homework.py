@@ -1,23 +1,24 @@
 from dataclasses import dataclass
 from typing import Dict, Type
 
+
 @dataclass
 class InfoMessage:
     """Информационное сообщение о тренировке."""
-    
+
     training_type: str
     duration: int
     distance: float
     speed: float
-    calories: float    
-    
+    calories: float
+
     def get_message(self) -> str:
         return (f'Тип тренировки: {self.training_type}; '
                 f'Длительность: {self.duration:0.3f} ч.; '
                 f'Дистанция: {self.distance:0.3f} км; '
                 f'Ср. скорость: {self.speed:0.3f} км/ч; '
                 f'Потрачено ккал: {self.calories:0.3f}.')
-         
+
 
 class Training:
     """Базовый класс тренировки."""
@@ -74,7 +75,7 @@ class Running(Training):
                 - self.CF_CALORIE_RUN2)
                 * self.weight
                 / self.M_IN_KM
-                * (self.duration 
+                * (self.duration
                 * self.MIN_IN_HOUR))
 
 
@@ -100,7 +101,7 @@ class SportsWalking(Training):
                 + (speed ** 2 // self.height)
                 * self.CF_CALORIE_WALK2
                 * self.weight)
-                * (self.duration 
+                * (self.duration
                 * self.MIN_IN_HOUR))
 
 
@@ -141,7 +142,7 @@ class Swimming(Training):
                 + self.CF_CALORIE_SWIM1)
                 * self.CF_CALORIE_SWIM2
                 * self.weight)
-                
+
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
